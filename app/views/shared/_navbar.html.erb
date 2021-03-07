@@ -37,9 +37,21 @@
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <%= link_to "Home", root_path, class: "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" %>
             <%= link_to "About", about_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
-            <%= link_to "Sign Up", sign_up_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+            
+            
             <%# <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a> %>
+            <% if Current.user %>
+            <div class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+             <span><%= Current.user.email%></span>
+            </div>
+              <div class="inline-block mr-2 mt-2">
+                <%= button_to 'Logout', logout_path, method: :delete, class:"focus:outline-none text-red-600 text-sm py-2.5 px-5 rounded-md border border-red-600 hover:bg-red-50" %>
+              </div>  
+            <% else %>
+            <%= link_to "Sign Up", sign_up_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+            <%= link_to "Login", sign_in_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+            <% end %>
           </div>
         </div>
       </div>
